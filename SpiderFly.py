@@ -1,5 +1,6 @@
 # import the required modules
 import random
+import statistics
 
 # spider object
 class spider:
@@ -54,23 +55,21 @@ def run(s, f):
 # main function
 def main():
     # set up variables
-    counter = 0
-    total = 0
+    moves = []
     limit = int(input("Enter the number of simulations: "))
     # program loop
-    while counter < limit:
+    for i in range(limit):
         # set up objects
         s = spider(2, 1)
         f = fly(4, 0)
         # process a simulation
         num = run(s, f)
         # change variables
-        counter += 1
-        total += num
+        moves.append(num)
+    # calculate required values
+    mode = statistics.mode(moves)
     # return data to user
-    print("Number of simulations: {}".format(counter))
-    print("Number of moves: {}".format(total))
-    print("Expected number of moves: {}".format(total / counter))
+    print("Expected number of moves: {}".format(mode))
 
 # check if this is first instance
 if __name__ == "__main__":
