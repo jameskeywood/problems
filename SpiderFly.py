@@ -1,6 +1,7 @@
 # import the required modules
 import random
 import statistics
+import math
 
 # spider object
 class spider:
@@ -56,6 +57,7 @@ def run(s, f):
 def main():
     # set up variables
     moves = []
+    total = 0
     limit = int(input("Enter the number of simulations: "))
     # program loop
     for i in range(limit):
@@ -66,10 +68,15 @@ def main():
         num = run(s, f)
         # change variables
         moves.append(num)
+        total += num
     # calculate required values
     mode = statistics.mode(moves)
+    mean = total / limit
+    median = sorted(moves)[math.ceil((limit / 2))]
     # return data to user
-    print("Expected number of moves: {}".format(mode))
+    print("Likely value      mode    {}".format(mode))
+    print("Expected value    mean    {}".format(mean))
+    print("Middle value      median  {}".format(median))
 
 # check if this is first instance
 if __name__ == "__main__":
