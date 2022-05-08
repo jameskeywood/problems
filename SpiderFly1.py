@@ -1,3 +1,7 @@
+# Spider and fly on opposite vertices of a cube
+# Spider has random movement to catch fly
+# Need to find expected number of moves
+
 # import the required modules
 import random
 import statistics
